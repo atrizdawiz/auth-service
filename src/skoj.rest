@@ -1,0 +1,25 @@
+
+get http://localhost:5000/secret-area
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImxhYmJmcmVkZHkiLCJpYXQiOjE2MTc5Njg4OTMsImV4cCI6MTYxNzk2ODk1M30.VzBn5fq6nllSzmCC9J9M-k6OcdAlOkRvammOQgSH5oQ
+###
+get http://localhost:5000/secret-area/adde
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkZGUiLCJpYXQiOjE2MTc2MTg1ODksImV4cCI6MTYxNzYxODY0OX0.sQnsztvQGmF_Zo4HDqMtsGNbgfIJpXWvLsVHFt3A0zs
+
+
+
+###
+post http://localhost:5000/api/auth/signup
+Content-Type: application/json
+
+{"name": "labbfreddy",
+"password": "en_hemlis",
+"email": "freddy@gmail.com"}
+
+###
+post http://localhost:5000/api/auth/login
+Content-Type: application/json
+
+{"name": "labbfreddy",
+"password": "en_hemlis",
+"email": "freddy@gmail.com"}
+
