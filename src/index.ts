@@ -4,7 +4,13 @@ import { verifyToken, verifyUser } from "./lib/middleware";
 import authRoute from "./routes/auth";
 
 const app = express();
-
+declare global {
+  namespace Express {
+    interface Request {
+      userData: any;
+    }
+  }
+}
 app.use(cors());
 app.options("*", cors());
 app.use(express.json());
