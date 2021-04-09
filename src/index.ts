@@ -25,7 +25,7 @@ app.get("/", (_, res) => {
 });
 
 app.get(
-  "/secret-area",
+  "/verify",
   verifyToken,
   (req: Request, res: Response, next: NextFunction) => {
     res.send("Nice du får vara här och berätta hemlisar!");
@@ -33,7 +33,7 @@ app.get(
 );
 
 app.get(
-  "/secret-area/:username",
+  "/verify/:username",
   verifyToken,
   verifyUser,
   (req: Request, res: Response, next: NextFunction) => {
