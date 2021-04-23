@@ -18,7 +18,7 @@ interface UserCrudResponse {
 }
 
 export const createUser = async ({
-  name,
+  username,
   password,
   email,
 }: user): Promise<UserCrudResponse> => {
@@ -27,7 +27,7 @@ export const createUser = async ({
 
     const newUser = await prisma.user.create({
       data: {
-        name,
+        username,
         password: hashedPassword,
         email,
       },
@@ -39,17 +39,17 @@ export const createUser = async ({
 };
 
 export const loginUser = async ({
-  name,
+  username,
   password,
 }: user): Promise<UserCrudResponse> => {
-  const userInDb = await prisma.user.findUnique({ where: { name } });
+  const userInDb = await prisma.user.findUnique({ where: { username } });
   try {
     if (userInDb && (await bcrypt.compare(password, userInDb.password))) {
       delete userInDb.password;
       return {
         status: Status.SUCCESS,
         data: userInDb,
-        token: generateAccessToken(name),
+        token: generateAccessToken(username),
       };
     } else {
       return { status: Status.FAILURE, error: ["incorrect password"] };
