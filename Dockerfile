@@ -25,7 +25,7 @@ ENV LOCAL_CACHE=true
 RUN yarn clean
 RUN yarn build
 
-# Production image, copy all the files and run next
+# Production image, copy all the files and run app
 FROM node:14.16-alpine AS runner
 WORKDIR /app
 
@@ -36,7 +36,6 @@ RUN adduser -S auth -u 1001
 
 RUN chown -R auth:nodejs /app
 
-# Copy only built files needed to run the app
 COPY --from=builder /app/dist ./
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package.json ./package.json
