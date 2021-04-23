@@ -42,7 +42,9 @@ export const loginUser = async ({
   username,
   password,
 }: user): Promise<UserCrudResponse> => {
-  const userInDb = await prisma.user.findUnique({ where: { username } });
+  const userInDb = await prisma.user.findUnique({
+    where: { username },
+  });
   try {
     if (userInDb && (await bcrypt.compare(password, userInDb.password))) {
       delete userInDb.password;

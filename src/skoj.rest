@@ -11,7 +11,7 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkZGUiLCJp
 post http://localhost:5000/api/auth/signup
 Content-Type: application/json
 
-{"name": "hejpastej",
+{"username": "hejpastej",
 "password": "ett_losenord",
 "email": "bananer@korv.se"}
 
@@ -19,7 +19,7 @@ Content-Type: application/json
 post http://localhost:5000/api/auth/login
 Content-Type: application/json
 
-{"name": "hejpastej",
+{"username": "hejpastej",
 "password": "ett_losenord",
 "email": "bananer@korv.se"}
 
