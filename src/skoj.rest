@@ -1,6 +1,6 @@
 
 get http://localhost:5000/verify
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImxhYmJmcmVkZHkiLCJpYXQiOjE2MTc5Njg4OTMsImV4cCI6MTYxNzk2ODk1M30.VzBn5fq6nllSzmCC9J9M-k6OcdAlOkRvammOQgSH5oQ
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhlanBhc3RlaiIsImlhdCI6MTYxOTE3NDM3NywiZXhwIjoxNjE5MTc0NDM3fQ.RXjg7A6d84oa_9Yiwq6XFJfmBmexz7lPRlpMir9NF3s
 ###
 get http://localhost:5000/verify/adde
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkZGUiLCJpYXQiOjE2MTc2MTg1ODksImV4cCI6MTYxNzYxODY0OX0.sQnsztvQGmF_Zo4HDqMtsGNbgfIJpXWvLsVHFt3A0zs
@@ -11,15 +11,15 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkZGUiLCJp
 post http://localhost:5000/api/auth/signup
 Content-Type: application/json
 
-{"name": "",
-"password": "",
-"email": ""}
+{"name": "hejpastej",
+"password": "ett_losenord",
+"email": "bananer@korv.se"}
 
 ###
 post http://localhost:5000/api/auth/login
 Content-Type: application/json
 
-{"name": "labbfreddy",
-"password": "en_hemlis",
-"email": "freddy@gmail.com"}
+{"name": "hejpastej",
+"password": "ett_losenord",
+"email": "bananer@korv.se"}
 

@@ -8,8 +8,12 @@ datasource db {
 }
 
 model user {
-  id       String @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
-  name     String @unique
-  password String
-  email    String @unique
+  id        String  @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  firstname String? @db.VarChar(255)
+  lastname  String? @db.VarChar(255)
+  username  String? @db.VarChar(255)
+  email     String? @db.VarChar(255)
+  password  String? @db.VarChar(255)
+
+  @@unique([username, email], name: "user_username_email_key")
 }

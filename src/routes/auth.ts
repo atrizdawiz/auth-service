@@ -9,7 +9,7 @@ router.post("/login", async (req, res) => {
   if (authResponse.status === Status.FAILURE)
     res.status(401).send(authResponse);
   else {
-    const token = generateAccessToken(authResponse.data.name);
+    const token = generateAccessToken(authResponse.data.username);
     res.status(200).send({ user: authResponse.data, token });
   }
 });
