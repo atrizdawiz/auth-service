@@ -8,7 +8,7 @@ RUN yarn install --frozen-lockfile
 
 # Generate Prisma exports
 FROM node:14.16-alpine AS prisma
-ENV DATABASE_URL=postgresql://prisma:prisma@host.docker.internal:5555/userdb_local?schema=public
+ENV DATABASE_URL=postgresql://prisma:prisma@host.docker.internal:5432/userdb_local?schema=public
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY prisma/schema.prisma ./prisma/schema.prisma
