@@ -1,10 +1,12 @@
 {
   "author": "Andreas Östling <me@andreasostling.se> (https://andreasostling.se/)",
   "main": "dist/index.js",
+  "license": "MIT",
   "scripts": {
     "build": "tsc",
-    "start": "tsc & node .",
-    "dev": "tsc -w & nodemon ."
+    "start": "node .",
+    "dev": "tsc -w & nodemon .",
+    "clean": "rm -rf dist/*"
   },
   "dependencies": {
     "@prisma/client": "2.20.1",
