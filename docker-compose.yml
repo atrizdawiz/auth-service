@@ -1,7 +1,13 @@
 version: "3.9" # optional since v1.27.0
 services:
+  nginx-proxy:
+    image: nginxproxy/nginx-proxy
+    ports:
+      - "80:80"
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
   auth-node:
-    image: rootberg/auth-service:latest
+    build: .
     environment:
       DATABASE_URL: ${DATABASE_URL}
       TOKEN_SECRET: ${TOKEN_SECRET}
