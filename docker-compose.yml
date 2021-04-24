@@ -12,7 +12,7 @@ services:
     depends_on:
       - db
   db:
-    image: rootberg/user-db:latest
+    image: registry.digitalocean.com/rootberg/user-db:latest
     restart: always
     environment:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
