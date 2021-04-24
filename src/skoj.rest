@@ -10,9 +10,9 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkZGUiLCJp
 post http://localhost:5000/api/auth/signup
 Content-Type: application/json
 
-{"username": "hejpastej",
+{"username": "jkjhpastej",
 "password": "ett_losenord",
-"email": "bananer@korv.se"}
+"email": "banjhjjhaner@korv.se"}
 
 ###
 post http://localhost:5000/api/auth/login
