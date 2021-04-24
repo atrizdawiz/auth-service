@@ -9,13 +9,9 @@ services:
       - "5000:5000"
     links:
       - db
-    depends_on:
-      - db
   db:
     image: registry.digitalocean.com/rootberg/user-db:latest
     restart: always
     environment:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       POSTGRES_DB: ${POSTGRES_DB}
-    ports:
-      - "5432:5555"
