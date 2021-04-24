@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('build docker image') {
             steps {
-                sh 'docker build . -t rootberg/auth-service'
-        }
+                sh 'docker build . -t rootberg/auth-service'}
+            }
     }
 }
