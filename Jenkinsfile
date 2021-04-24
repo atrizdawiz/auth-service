@@ -1,9 +1,9 @@
 pipeline {
-    agent { dockerfile true }
+    agent { docker { image 'node:14-alpine' } }
     stages {
-        stage('Test') {
+        stage('build') {
             steps {
-              step([$class: 'DockerComposeBuilder', dockerComposeFile: 'docker-compose.yml', option: [$class: 'ExecuteCommandInsideContainer', command: '--env-file .env.prod up', index: 1, privilegedMode: false, service: 'auth-service', workDir: ''], useCustomDockerComposeFile: true])
+                sh 'npm --version'
             }
         }
     }
