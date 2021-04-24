@@ -14,10 +14,10 @@ declare global {
 app.use(cors());
 app.options("*", cors());
 app.use(express.json());
-app.use("/auth", authRoute);
+app.use("/", authRoute);
 
 const port = 5000;
-app.get("/auth", (_, res) => {
+app.get("/", (_, res) => {
   res.status(200).send(
     `<h1>Tjena!</h1>
   <h2>api in full effect</h2>`
@@ -25,7 +25,7 @@ app.get("/auth", (_, res) => {
 });
 
 app.get(
-  "/auth/verify",
+  "/verify",
   verifyToken,
   (req: Request, res: Response, next: NextFunction) => {
     res.send("Nice du får vara här och berätta hemlisar!");
@@ -33,7 +33,7 @@ app.get(
 );
 
 app.get(
-  "/auth/verify/:username",
+  "/verify/:username",
   verifyToken,
   verifyUser,
   (req: Request, res: Response, next: NextFunction) => {
