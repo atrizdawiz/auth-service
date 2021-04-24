@@ -3,6 +3,7 @@ pipeline {
     stages {
         stage('build docker image') {
             steps {
+                sh 'apt-get install docker'
                 sh 'docker build . -t rootberg/auth-service'}
             }
     }
