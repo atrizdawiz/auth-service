@@ -6,23 +6,11 @@ WORKDIR /app
 COPY package.json yarn.lock ./
 RUN yarn install --frozen-lockfile
 
-# Generate Prisma exports
-FROM node:14.16-alpine AS prisma
-ENV DATABASE_URL=postgresql://prisma:prisma@127.0.0.1:5432/userdb_local?schema=public
-WORKDIR /app
-COPY --from=deps /app/node_modules ./node_modules
-COPY prisma/schema.prisma ./prisma/schema.prisma
-COPY package.json ./
-RUN yarn prisma validate
-RUN yarn prisma introspect
-RUN yarn prisma generate
-
 # Rebuild the source code only when needed
 FROM node:14.16-alpine AS builder
 WORKDIR /app
 COPY . .
 COPY --from=deps /app/node_modules ./node_modules
-COPY --from=prisma /app/node_modules/.prisma ./node_modules/.prisma
 
 ENV LOCAL_CACHE=true
 
