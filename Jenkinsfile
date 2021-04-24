@@ -1,9 +1,8 @@
 pipeline {
-    agent { docker { image 'node:14-alpine' } }
+    agent { docker { image 'docker:20.10.6' } }
     stages {
         stage('build docker image') {
             steps {
-                sh 'apt-get install docker'
                 sh 'docker build . -t rootberg/auth-service'}
             }
     }
