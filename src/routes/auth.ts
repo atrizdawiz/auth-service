@@ -1,5 +1,6 @@
 import express from "express";
 import { body, validationResult } from "express-validator";
+import { verifyToken, verifyUser } from "../lib/middleware";
 import { generateAccessToken } from "../lib/tokenService";
 import { createUser, loginUser, Status } from "../lib/userService";
 const router = express.Router();
@@ -32,5 +33,8 @@ router.post(
     } else res.status(500).send({ FAILURE: userCrudResponse.error });
   }
 );
+
+router.use("/verify", verifyToken);
+router.use("/verify/:username", verifyToken, verifyUser);
 
 export default router;

@@ -14,31 +14,15 @@ declare global {
 app.use(cors());
 app.options("*", cors());
 app.use(express.json());
-app.use("/", authRoute);
+app.use("/auth", authRoute);
 
 const port = 5000;
+
 app.get("/", (_, res) => {
   res.status(200).send(
     `<h1>Tjena!</h1>
   <h2>api in full effect</h2>`
   );
 });
-
-app.get(
-  "/verify",
-  verifyToken,
-  (req: Request, res: Response, next: NextFunction) => {
-    res.send("Nice du får vara här och berätta hemlisar!");
-  }
-);
-
-app.get(
-  "/verify/:username",
-  verifyToken,
-  verifyUser,
-  (req: Request, res: Response, next: NextFunction) => {
-    res.send("Nice du får vara själv här! Ingen annan :)");
-  }
-);
 
 app.listen(port, () => console.log(`Running on port ${port}`));
