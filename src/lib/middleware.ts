@@ -16,6 +16,7 @@ export const verifyToken = (
   try {
     const decoded = jwt.verify(token, process.env.TOKEN_SECRET as string);
     req.userData = decoded;
+    res.send(req.userData);
     next();
   } catch (error) {
     return res.status(401).json({ message: error.message });

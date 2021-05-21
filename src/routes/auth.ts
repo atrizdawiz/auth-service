@@ -35,6 +35,7 @@ router.post(
 );
 
 router.use("/verify", verifyToken);
+
 router.use("/verify/:username", verifyToken, verifyUser);
 
 export default router;
