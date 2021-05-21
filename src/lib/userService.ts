@@ -36,32 +36,49 @@ VALUES ($1, $2, $3)`,
   }
 };
 
+type LoginData = {
+  user: string;
+  password: string;
+};
+
 export const loginUser = async ({
-  username,
+  user,
   password,
-}: any): Promise<UserCrudResponse> => {
-  const {
-    rows,
-  } = (await db.query(
-    "SELECT * FROM public.user WHERE username = $1 FETCH FIRST 1 ROWS ONLY",
-    [username]
-  )) as any;
-  const userInDb = rows[0];
+}: LoginData): Promise<UserCrudResponse> => {
+  let userInDb: any;
+  const isEmail = user.includes("@");
+
+  if (isEmail) {
+    const {
+      rows,
+    } = (await db.query(
+      "SELECT * FROM public.user WHERE email = $1 FETCH FIRST 1 ROWS ONLY",
+      [user]
+    )) as any;
+    userInDb = rows[0];
+  } else {
+    const {
+      rows,
+    } = (await db.query(
+      "SELECT * FROM public.user WHERE username = $1 FETCH FIRST 1 ROWS ONLY",
+      [user]
+    )) as any;
+    userInDb = rows[0];
+  }
 
   try {
     if (userInDb && (await bcrypt.compare(password, userInDb.password))) {
-      console.log("found user in db:", userInDb);
       delete userInDb.password;
       return {
         status: Status.SUCCESS,
         data: userInDb,
-        token: generateAccessToken(username),
+        token: generateAccessToken(user),
       };
     } else {
-      console.log("no user matching in db");
       return { status: Status.FAILURE, error: ["incorrect password"] };
     }
   } catch (error) {
+    console.log(error);
     return { status: Status.FAILURE, error: ["something screwed up"] };
   }
 };
