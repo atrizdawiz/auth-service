@@ -29,8 +29,8 @@ router.post(
 
     if (userCrudResponse.status === Status.SUCCESS) {
       delete userCrudResponse.data.password;
-      res.status(200).send({ SUCCESS: userCrudResponse.data });
-    } else res.status(500).send({ FAILURE: userCrudResponse.error });
+      res.status(200).send(userCrudResponse.data);
+    } else res.status(500).send(userCrudResponse.error);
   }
 );
 
