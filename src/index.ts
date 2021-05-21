@@ -14,7 +14,7 @@ declare global {
 app.use(cors());
 app.options("*", cors());
 app.use(express.json());
-app.use("/auth", authRoute);
+app.use("/", authRoute);
 
 const port = 5000;
 
