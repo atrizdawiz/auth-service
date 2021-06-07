@@ -1,10 +1,9 @@
 # auth-service
 
-A basic api service for handeling authentication.
+A basic api service for handling authentication.
 
 using:
 * bcrypt
 * jsonwebtoken
-* Prisma ORM (for fun)
 
 The app is dockerized.
