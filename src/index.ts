@@ -1,6 +1,5 @@
 import cors from "cors";
-import express, { NextFunction, Request, Response } from "express";
-import { verifyToken, verifyUser } from "./lib/middleware";
+import express from "express";
 import authRoute from "./routes/auth";
 
 const app = express();
